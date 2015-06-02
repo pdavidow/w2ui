@@ -6,7 +6,7 @@ Template.t2.onRendered(function () {
         w2uimeteorCollection: W2UI_METEOR.Employees,
         name: 'myGrid2',
         show: {
-            toolbar: true
+            toolbar: false
         },
         columns: [
             {field: 'recid', caption: 'ID', size: '150px', sortable: true, attr: 'align=left', hidden: true},
@@ -31,14 +31,6 @@ Template.t2.onRendered(function () {
                 }
             }
         ],
-        toolbar: { // http://w2ui.com/web/demos/#!grid/grid-21
-            items: W2UI_METEOR.PermissionsClientHelper.toolbarItemRequest(['add']),
-            onClick: function (event) {
-                if (event.target == 'add') {
-                    W2UI_METEOR.ClientHelper.addForGrid(grid, event);
-                };
-            }
-        },
         onClick: function(target, eventData) {
             var oldRecid = currentRecid;
             currentRecid = eventData.recid;
