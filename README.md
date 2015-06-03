@@ -8,3 +8,5 @@ Assumes 1:1:1 for Collection:Class:Schema.
 The top grid uses multi-record save for (double-click) inline-edits, and is in decent shape.
 The bottom grid is single-record oriented, with unpolished interface. Note that for fields to be designated as changed 
 (little red triangle in field upper right), the user sometimes has to click around -- especially with the color picker. 
+
+Acknowledgement: This work is based on http://live.my-classes.com/blogs/15
