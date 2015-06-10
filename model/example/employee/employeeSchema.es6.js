@@ -11,9 +11,20 @@ W2UI_METEOR.Schemas.Employee = new SimpleSchema([W2UI_METEOR.Schemas.Person, {
         min: 1,
         unique: true ,
         custom: function() {
-            if (this.isSet && ! W2UI_METEOR.EmployeeManager.isBadgeNumberUnique(this.value)) {
-                return "notUnique";
-            };
+            var isUnique;
+            if (! this.isSet) return;
+
+            isUnique = true;
+            if (this.isInsert) {
+                if (! W2UI_METEOR.EmployeeManager.isBadgeNumberUnique(this.value)) {
+                    isUnique = false;
+                };
+            } else if (this.isUpdate) {
+                if (! W2UI_METEOR.EmployeeManager.isBadgeNumberUnique_ignoring(this.value, [this.docId])) {
+                    isUnique = false;
+                }
+            }
+            if (! isUnique) return "notUnique";
         }
     },
     creationTimeStamp: { // on server of course
